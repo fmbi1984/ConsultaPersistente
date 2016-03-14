@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DRX-lX-5xz">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Libros-->
+        <scene sceneID="GSb-XY-MNA">
+            <objects>
+                <tableViewController id="Rk6-jq-LPI" customClass="BookListTableViewController" customModule="Consulta_Persistente_ISBN" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="YvT-m7-oHW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BookCell" id="Qph-dQ-fSW">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qph-dQ-fSW" id="YB6-h8-gaR">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="SyT-UB-StY" kind="show" identifier="bookSegue" id="cQj-9Y-Z4H"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Rk6-jq-LPI" id="F3C-H4-K3c"/>
+                            <outlet property="delegate" destination="Rk6-jq-LPI" id="tRW-px-XSZ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Libros" id="gec-WJ-Ubt">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="imv-Qg-xwx">
+                            <connections>
+                                <segue destination="5Uw-cE-pQO" kind="show" identifier="searchSegue" id="IYL-gD-had"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vxo-1s-uTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="626" y="249"/>
+        </scene>
+        <!--Book Search View Controller-->
+        <scene sceneID="rue-jL-M3c">
+            <objects>
+                <viewController id="5Uw-cE-pQO" customClass="BookSearchViewController" customModule="Consulta_Persistente_ISBN" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9Ip-jD-0YU"/>
+                        <viewControllerLayoutGuide type="bottom" id="x53-d6-Qo4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XUs-pl-1QY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Código ISBN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zcj-kv-Xv2">
+                                <rect key="frame" x="112" y="196" width="97" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="lRl-3F-fl6">
+                                <rect key="frame" x="100" y="225" width="120" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="2rm-3g-EV2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
+                                <connections>
+                                    <action selector="search:" destination="5Uw-cE-pQO" eventType="primaryActionTriggered" id="wKr-K5-RQX"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lRl-3F-fl6" firstAttribute="centerX" secondItem="XUs-pl-1QY" secondAttribute="centerX" id="2e2-0C-je3"/>
+                            <constraint firstItem="lRl-3F-fl6" firstAttribute="centerY" secondItem="XUs-pl-1QY" secondAttribute="centerY" id="IkM-nS-7dM"/>
+                            <constraint firstItem="Zcj-kv-Xv2" firstAttribute="centerX" secondItem="XUs-pl-1QY" secondAttribute="centerX" id="R2Y-Nh-p6I"/>
+                            <constraint firstItem="lRl-3F-fl6" firstAttribute="top" secondItem="Zcj-kv-Xv2" secondAttribute="bottom" constant="8" id="xBd-1s-8cz"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="isbnTextField" destination="lRl-3F-fl6" id="Hv8-WO-hgC"/>
+                        <segue destination="SyT-UB-StY" kind="show" identifier="bookSegue" id="frv-90-8rP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zzg-cf-WBJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1020" y="-312"/>
+        </scene>
+        <!--Book Details View Controller-->
+        <scene sceneID="UGW-Ba-Cd5">
+            <objects>
+                <viewController id="SyT-UB-StY" customClass="BookDetailsViewController" customModule="Consulta_Persistente_ISBN" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xkr-ML-9iC"/>
+                        <viewControllerLayoutGuide type="bottom" id="kPZ-NK-MWv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6SN-kQ-rAp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Título" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vx6-pR-btu">
+                                <rect key="frame" x="24" y="79" width="272" height="22"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ISBN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRs-EU-0ow">
+                                <rect key="frame" x="24" y="109" width="272" height="10"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iRY-bh-pIp">
+                                <rect key="frame" x="16" y="150" width="288" height="315"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Autor" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHR-9x-tXP">
+                                <rect key="frame" x="24" y="127" width="272" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iRY-bh-pIp" firstAttribute="top" secondItem="YHR-9x-tXP" secondAttribute="bottom" constant="8" id="0by-BV-Vdu"/>
+                            <constraint firstItem="YHR-9x-tXP" firstAttribute="leading" secondItem="6SN-kQ-rAp" secondAttribute="leadingMargin" constant="8" id="6Qh-9b-FTA"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="iRY-bh-pIp" secondAttribute="bottom" constant="8" id="CHW-P1-cDi"/>
+                            <constraint firstItem="kPZ-NK-MWv" firstAttribute="top" secondItem="iRY-bh-pIp" secondAttribute="bottom" constant="15" id="Hp7-3H-zMM"/>
+                            <constraint firstItem="iRY-bh-pIp" firstAttribute="top" secondItem="YHR-9x-tXP" secondAttribute="bottom" constant="8" id="J6T-Xr-xCi"/>
+                            <constraint firstItem="pRs-EU-0ow" firstAttribute="centerX" secondItem="6SN-kQ-rAp" secondAttribute="centerX" id="LR5-qq-OqH"/>
+                            <constraint firstItem="YHR-9x-tXP" firstAttribute="top" secondItem="pRs-EU-0ow" secondAttribute="bottom" constant="8" id="OVO-WA-tRI"/>
+                            <constraint firstItem="iRY-bh-pIp" firstAttribute="leading" secondItem="6SN-kQ-rAp" secondAttribute="leadingMargin" id="OvC-bS-G8J"/>
+                            <constraint firstItem="iRY-bh-pIp" firstAttribute="leading" secondItem="6SN-kQ-rAp" secondAttribute="leadingMargin" constant="8" id="PY6-XQ-gWI"/>
+                            <constraint firstItem="vx6-pR-btu" firstAttribute="top" secondItem="Xkr-ML-9iC" secondAttribute="bottom" constant="15" id="TVV-p8-5gi"/>
+                            <constraint firstItem="iRY-bh-pIp" firstAttribute="trailing" secondItem="6SN-kQ-rAp" secondAttribute="trailingMargin" id="Uak-6m-1WI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vx6-pR-btu" secondAttribute="trailing" constant="8" id="evS-VM-epS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YHR-9x-tXP" secondAttribute="trailing" constant="8" id="h9i-M1-E22"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pRs-EU-0ow" secondAttribute="trailing" constant="8" id="hmE-wO-Qho"/>
+                            <constraint firstItem="pRs-EU-0ow" firstAttribute="top" secondItem="vx6-pR-btu" secondAttribute="bottom" constant="8" id="iPb-cu-1zn"/>
+                            <constraint firstItem="YHR-9x-tXP" firstAttribute="centerX" secondItem="6SN-kQ-rAp" secondAttribute="centerX" id="ozy-BB-Cri"/>
+                            <constraint firstItem="vx6-pR-btu" firstAttribute="centerX" secondItem="6SN-kQ-rAp" secondAttribute="centerX" id="pfI-KZ-KQI"/>
+                            <constraint firstItem="vx6-pR-btu" firstAttribute="leading" secondItem="6SN-kQ-rAp" secondAttribute="leadingMargin" constant="8" id="s35-3b-yGM"/>
+                            <constraint firstItem="pRs-EU-0ow" firstAttribute="leading" secondItem="6SN-kQ-rAp" secondAttribute="leadingMargin" constant="8" id="sMM-eb-z8V"/>
+                            <constraint firstItem="iRY-bh-pIp" firstAttribute="trailing" secondItem="6SN-kQ-rAp" secondAttribute="trailingMargin" constant="8" id="t2r-Dc-j0t"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0by-BV-Vdu"/>
+                                <exclude reference="CHW-P1-cDi"/>
+                                <exclude reference="PY6-XQ-gWI"/>
+                                <exclude reference="t2r-Dc-j0t"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="bookAuthors" destination="YHR-9x-tXP" id="1XC-uc-bNv"/>
+                        <outlet property="bookCover" destination="iRY-bh-pIp" id="2ad-re-IXc"/>
+                        <outlet property="bookISBN" destination="pRs-EU-0ow" id="qBj-P5-g16"/>
+                        <outlet property="bookTitle" destination="vx6-pR-btu" id="22O-BG-Vdz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Te-is-hcX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1038" y="376"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="R9M-1e-dgV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DRX-lX-5xz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sab-EI-lXk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Rk6-jq-LPI" kind="relationship" relationship="rootViewController" id="qcF-97-BwM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ngN-Oi-NHn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="236" y="249"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="frv-90-8rP"/>
+    </inferredMetricsTieBreakers>
+</document>
